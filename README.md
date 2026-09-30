@@ -229,10 +229,3 @@ Playbook успешно обнаружил и выполнил role:
 ![Шаг 16 — Запуск playbook](screenshots/Task16.png)
 
 
-### Collection
-
-https://github.com/deminilyadev-maker/my_own_collection
-
-### Архив
-
-`my_own_namespace-yandex_cloud_elk-1.0.0.tar.gz`
