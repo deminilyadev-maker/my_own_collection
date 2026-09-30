@@ -1,7 +1,0 @@
-{
-    "text": true,
-    "output": "path-message",
-    "exclude_extensions": [
-        ".json"
-    ]
-}

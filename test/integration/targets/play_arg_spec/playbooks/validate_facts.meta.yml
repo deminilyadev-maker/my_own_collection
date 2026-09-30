@@ -1,8 +1,0 @@
-argument_specs:
-  Gather Facts:
-    options:
-      custom_fact:
-        required: True
-        type: str
-      secret_fact:
-        no_log: True

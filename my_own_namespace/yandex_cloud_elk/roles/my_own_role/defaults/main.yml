@@ -1,0 +1,2 @@
+path: /tmp/my_test.txt
+content: "Hello from my own module"

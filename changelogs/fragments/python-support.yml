@@ -1,3 +1,0 @@
-major_changes:
-  - ansible - Drop support for Python 3.9.
-  - ansible-test - Drop support for Python 3.9.

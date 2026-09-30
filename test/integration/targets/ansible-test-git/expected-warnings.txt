@@ -1,3 +1,0 @@
-WARNING: Missing submodule: sub-copy
-WARNING: Reviewing previous 1 warning(s):
-WARNING: Missing submodule: sub-copy

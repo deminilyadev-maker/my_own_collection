@@ -1,7 +1,0 @@
-context/target
-gather_facts/no
-shippable/powershell/group1
-shippable/windows/group1
-shippable/windows/smoketest
-posix
-windows

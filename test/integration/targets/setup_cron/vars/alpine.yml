@@ -1,2 +1,0 @@
-faketime_pkg: libfaketime
-list_pkg_files: apk info -L

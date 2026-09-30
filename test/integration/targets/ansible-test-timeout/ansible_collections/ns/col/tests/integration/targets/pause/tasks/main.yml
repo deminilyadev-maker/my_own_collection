@@ -1,3 +1,0 @@
-- name: Wait long enough for the timeout callback to fire
-  wait_for:
-    timeout: 30

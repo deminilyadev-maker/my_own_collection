@@ -1,2 +1,0 @@
-+ ansible-playbook -i inventory test_long_line.yml
-++ set +x

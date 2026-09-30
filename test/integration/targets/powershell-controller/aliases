@@ -1,4 +1,0 @@
-context/controller
-gather_facts/no
-shippable/posix/group5
-shippable/generic/group1  # runs in the default test container
