@@ -1,97 +1,149 @@
 # Netology — Custom Ansible Module and Collection
 
-**Student:** Ilya Demin
+**Студент:** Илья Демин
 
 ## Collection
 
-GitHub repository:
+Репозиторий GitHub:
 
-[my_own_collection](https://github.com/deminilyadev-maker/my_own_collection)
+https://github.com/deminilyadev-maker/my_own_collection
 
-Collection name: `my_own_namespace.yandex_cloud_elk`
+Название collection:
 
-Collection version: `1.0.0`
+`my_own_namespace.yandex_cloud_elk`
 
-Collection archive: `my_own_namespace-yandex_cloud_elk-1.0.0.tar.gz`
+Версия collection:
+
+`1.0.0`
+
+Архив collection:
+
+`my_own_namespace-yandex_cloud_elk-1.0.0.tar.gz`
 
 ---
 
-## Step 1. Create `my_own_module.py`
+## Шаг 1. Создание `my_own_module.py`
 
-A new `my_own_module.py` file was created in the Ansible virtual environment.
+В виртуальном окружении Ansible был создан новый файл `my_own_module.py`.
 
-The module was based on the standard Ansible custom module template and then modified according to the task requirements.
+За основу был взят стандартный шаблон пользовательского модуля Ansible.
 
-## Step 2. Fill the module with the Ansible module structure
+## Шаг 2. Заполнение модуля
 
-The module contains `DOCUMENTATION`, `EXAMPLES`, `RETURN`, `AnsibleModule`, an argument specification, `run_module()`, and `main()`.
+Модуль был оформлен в соответствии с требованиями Ansible.
 
-## Step 3. Implement the main task
+В модуле присутствуют:
 
-The custom module was modified to create a text file on the remote host.
+- `DOCUMENTATION`
+- `EXAMPLES`
+- `RETURN`
+- `AnsibleModule`
+- описание параметров
+- функция `run_module()`
+- функция `main()`
 
-It accepts two required parameters:
+## Шаг 3. Реализация основной задачи
 
-| Parameter | Type | Description |
+Модуль был изменён таким образом, чтобы создавать текстовый файл на удалённом хосте.
+
+Модуль принимает два обязательных параметра:
+
+| Параметр | Тип | Описание |
 |---|---|---|
-| `path` | string | Path to the text file |
-| `content` | string | Content written to the file |
+| `path` | string | Путь к создаваемому текстовому файлу |
+| `content` | string | Содержимое текстового файла |
 
-The module checks the existing file and content, creates or updates the file when necessary, and supports check mode.
+Логика работы модуля:
 
-## Step 4. Local module test
+1. Проверяется существование файла.
+2. Если файл существует, считывается его текущее содержимое.
+3. Если содержимое уже соответствует требуемому, файл не изменяется.
+4. Если файла нет, он создаётся.
+5. Если содержимое отличается, файл обновляется.
+6. Реализована поддержка `check mode`.
 
-The custom module was tested locally with Ansible and successfully created the requested file.
+## Шаг 4. Локальная проверка модуля
 
-![Step 4 — Local module test](screenshots/Task4.png)
+Пользовательский модуль был проверен локально с помощью Ansible.
 
-## Step 5. Single-task playbook
+Модуль успешно выполнился и создал требуемый файл.
 
-A single-task playbook was created to use the custom module and create `/tmp/my_test.txt` with the content `Hello from my own module`.
+![Шаг 4 — Проверка модуля](screenshots/Task4.png)
 
-## Step 6. Idempotency test
+## Шаг 5. Создание single task playbook
 
-The playbook was executed repeatedly. When the file already contained the requested content, the module did not modify it and returned `changed=0`.
+Был создан playbook с одной задачей для использования пользовательского модуля.
 
-![Step 6 — Idempotency test](screenshots/Task6.png)
+Playbook создаёт файл:
 
-## Step 7. Exit the virtual environment
+`/tmp/my_test.txt`
 
-The virtual environment was exited after the initial module testing stage.
+с содержимым:
 
-## Step 8. Initialize the collection
+`Hello from my own module`
 
-A new collection was initialized:
+## Шаг 6. Проверка идемпотентности
 
-```text
-my_own_namespace.yandex_cloud_elk
-```
+Playbook был запущен повторно для проверки идемпотентности.
 
-Command:
+При наличии файла с уже заданным содержимым модуль не выполняет повторное изменение и возвращает:
+
+`changed=0`
+
+![Шаг 6 — Проверка идемпотентности](screenshots/Task6.png)
+
+## Шаг 7. Выход из виртуального окружения
+
+После завершения первоначального тестирования модуля виртуальное окружение было закрыто.
+
+## Шаг 8. Инициализация collection
+
+Была создана новая Ansible collection:
+
+`my_own_namespace.yandex_cloud_elk`
+
+Для создания использовалась команда:
 
 ```bash
 ansible-galaxy collection init my_own_namespace.yandex_cloud_elk
 ```
 
-## Step 9. Move the module into the collection
+## Шаг 9. Перенос модуля в collection
 
-The custom module was moved to:
+Созданный пользовательский модуль был перенесён в соответствующую директорию collection:
 
 ```text
 plugins/modules/my_own_module.py
 ```
 
-## Step 10. Convert the single-task playbook into a role
-
-The playbook was converted into the `my_own_role` role.
-
-The role uses:
+Структура collection содержит:
 
 ```text
-my_own_namespace.yandex_cloud_elk.my_own_module
+my_own_namespace/
+└── yandex_cloud_elk/
+    ├── plugins/
+    │   └── modules/
+    │       └── my_own_module.py
+    ├── roles/
+    │   └── my_own_role/
+    ├── galaxy.yml
+    ├── README.md
+    └── test_role.yml
 ```
 
-Role defaults:
+## Шаг 10. Создание role
+
+Single task playbook был преобразован в single task role.
+
+Название role:
+
+`my_own_role`
+
+Role использует пользовательский модуль:
+
+`my_own_namespace.yandex_cloud_elk.my_own_module`
+
+В `defaults/main.yml` определены все параметры модуля:
 
 ```yaml
 ---
@@ -99,55 +151,47 @@ path: /tmp/my_test.txt
 content: "Hello from my own module"
 ```
 
-## Step 11. Create a playbook for the role
+## Шаг 11. Создание playbook для role
 
-A playbook was created to use the role through its fully qualified collection name:
+Был создан playbook для использования role через полное имя collection:
 
-```text
-my_own_namespace.yandex_cloud_elk.my_own_role
-```
+`my_own_namespace.yandex_cloud_elk.my_own_role`
 
-The playbook was tested successfully.
+Playbook был успешно протестирован.
 
-## Step 12. Collection documentation and Git repository
+## Шаг 12. Документация и публикация collection
 
-The collection documentation was completed and the collection was uploaded to GitHub.
+Документация collection была подготовлена.
 
-Repository:
+Collection опубликована в собственном GitHub-репозитории:
 
 https://github.com/deminilyadev-maker/my_own_collection
 
-Collection version:
+Версия collection:
 
-```text
-1.0.0
-```
+`1.0.0`
 
-Git tag:
+На соответствующий commit был установлен Git tag:
 
-```text
-1.0.0
-```
+`1.0.0`
 
-## Step 13. Build the collection archive
+## Шаг 13. Создание архива collection
 
-The collection was packaged using:
+В корневой директории collection была выполнена команда:
 
 ```bash
 ansible-galaxy collection build
 ```
 
-Resulting archive:
+В результате был создан архив:
 
 ```text
 my_own_namespace-yandex_cloud_elk-1.0.0.tar.gz
 ```
 
-## Step 14. Create a separate test directory
+## Шаг 14. Создание отдельной директории
 
-A separate directory was created for testing the collection from the local archive.
-
-It contains:
+Для проверки collection из локального архива была создана отдельная директория:
 
 ```text
 collection_test/
@@ -155,60 +199,40 @@ collection_test/
 └── test_role.yml
 ```
 
-## Step 15. Install the collection from the local archive
+В неё были перенесены:
 
-The collection was installed using:
+- single task playbook;
+- архив collection.
+
+## Шаг 15. Установка collection из локального архива
+
+Collection была установлена из локального архива командой:
 
 ```bash
 ansible-galaxy collection install my_own_namespace-yandex_cloud_elk-1.0.0.tar.gz
 ```
 
-Installation completed successfully.
+Установка завершилась успешно.
 
-![Step 15 — Collection installation](screenshots/Task15.png)
+![Шаг 15 — Установка collection](screenshots/Task15.png)
 
-## Step 16. Run the playbook
+## Шаг 16. Запуск playbook
 
-After installation from the local archive, the playbook was executed to verify that the installed collection works correctly.
+После установки collection из локального архива был запущен playbook для проверки её работоспособности.
 
-The playbook successfully found and executed:
+Playbook успешно обнаружил и выполнил role:
 
-```text
-my_own_namespace.yandex_cloud_elk.my_own_role
-```
+`my_own_namespace.yandex_cloud_elk.my_own_role`
 
-The final execution completed without errors.
+Выполнение завершилось без ошибок.
 
-![Step 16 — Final playbook execution](screenshots/Task16.png)
+![Шаг 16 — Запуск playbook](screenshots/Task16.png)
 
----
 
-## Result
+### Collection
 
-The following requirements were completed:
+https://github.com/deminilyadev-maker/my_own_collection
 
-- Custom Ansible module created.
-- Module creates and updates a text file using `path` and `content`.
-- Module tested locally.
-- Single-task playbook created.
-- Idempotency verified.
-- Ansible collection initialized.
-- Custom module moved into the collection.
-- Single-task role created.
-- Role defaults configured for all module parameters.
-- Playbook created for the collection role.
-- Collection documentation completed.
-- Collection uploaded to GitHub.
-- Collection tagged with version `1.0.0`.
-- Collection archive created with `ansible-galaxy collection build`.
-- Archive and playbook copied to a separate test directory.
-- Collection installed from the local archive.
-- Playbook successfully executed using the installed collection.
+### Архив
 
-## Submission
-
-**Collection:** https://github.com/deminilyadev-maker/my_own_collection
-
-**Archive:** `my_own_namespace-yandex_cloud_elk-1.0.0.tar.gz`
-
-**Screenshots:** Steps 4, 6, 15 and 16 are included above.
+`my_own_namespace-yandex_cloud_elk-1.0.0.tar.gz`
