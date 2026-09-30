@@ -1,4 +1,4 @@
-# Netology — Custom Ansible Module and Collection
+# Custom Ansible Module and Collection
 
 ## Collection
 
@@ -218,44 +218,3 @@ Playbook успешно обнаружил и выполнил role:
 
 ![Шаг 16 — Запуск playbook](screenshots/Task16.png)
 
-## Шаг 17. Результаты работы
-
-В рамках задания были выполнены следующие пункты:
-
-- создан пользовательский Ansible-модуль;
-- реализовано создание и изменение текстового файла;
-- реализованы параметры `path` и `content`;
-- выполнена локальная проверка модуля;
-- создан single task playbook;
-- проверена идемпотентность;
-- создана Ansible collection;
-- модуль перенесён в collection;
-- создана role;
-- добавлены default-параметры role;
-- создан playbook для использования role;
-- подготовлена документация collection;
-- collection опубликована в GitHub;
-- установлен Git tag `1.0.0`;
-- создан архив `.tar.gz`;
-- создана отдельная директория для тестирования;
-- collection установлена из локального архива;
-- выполнен playbook после установки collection из архива.
-
-## Ссылки для сдачи
-
-### Collection
-
-https://github.com/deminilyadev-maker/my_own_collection
-
-### Архив
-
-`my_own_namespace-yandex_cloud_elk-1.0.0.tar.gz`
-
-### Скриншоты
-
-В отчёте приложены скриншоты выполнения:
-
-- Шаг 4 — `screenshots/Task4.png`
-- Шаг 6 — `screenshots/Task6.png`
-- Шаг 15 — `screenshots/Task15.png`
-- Шаг 16 — `screenshots/Task16.png`
