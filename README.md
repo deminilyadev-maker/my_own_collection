@@ -1,24 +1,14 @@
 # Netology — Custom Ansible Module and Collection
 
-**Студент:** Илья Демин
-
 ## Collection
 
-Репозиторий GitHub:
-
-https://github.com/deminilyadev-maker/my_own_collection
-
-Название collection:
-
-`my_own_namespace.yandex_cloud_elk`
-
-Версия collection:
-
-`1.0.0`
-
-Архив collection:
-
-`my_own_namespace-yandex_cloud_elk-1.0.0.tar.gz`
+| Параметр | Значение |
+|:---|:---|
+| **Студент** | Илья Демин |
+| **Репозиторий GitHub** | [my_own_collection](https://github.com/deminilyadev-maker/my_own_collection) |
+| **Collection** | `my_own_namespace.yandex_cloud_elk` |
+| **Версия** | `1.0.0` |
+| **Архив collection** | [my_own_namespace-yandex_cloud_elk-1.0.0.tar.gz](./my_own_namespace-yandex_cloud_elk-1.0.0.tar.gz) |
 
 ---
 
