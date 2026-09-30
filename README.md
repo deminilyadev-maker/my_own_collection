@@ -204,7 +204,7 @@ ansible-galaxy collection install my_own_namespace-yandex_cloud_elk-1.0.0.tar.gz
 
 Установка завершилась успешно.
 
-![Шаг 15 — Установка collection](screenshots/Task15.png)
+![Шаг 15 — Установка collection](screenshots/task15.png)
 
 ## Шаг 16. Запуск playbook
 
@@ -216,5 +216,5 @@ Playbook успешно обнаружил и выполнил role:
 
 Выполнение завершилось без ошибок.
 
-![Шаг 16 — Запуск playbook](screenshots/Task16.png)
+![Шаг 16 — Запуск playbook](screenshots/task16.png)
 
